@@ -8,7 +8,7 @@ function Pokemon() {
         <main>
             {Data.map((pokemon) => <article key={pokemon.pokedexId}><figure >
                 <picture>
-                    <img src={pokemon.image} alt="Image + `${pokemon.name}`)" />
+                    <img src={pokemon.image} alt={"Image" + " " + `${pokemon.name}`} />
                 </picture>
                 <figcaption>
                     <span className="types">{pokemon.apiTypes[0].name}</span>
