@@ -6,7 +6,7 @@ import Data from "../data/data.json"
 function Pokemon() {
     return (
         <main>
-            {Data.map((pokemon) => <article><figure key={pokemon.pokedexId}>
+            {Data.map((pokemon) => <article key={pokemon.pokedexId}><figure >
                 <picture>
                     <img src={pokemon.image} alt="Image + `${pokemon.name}`)" />
                 </picture>
