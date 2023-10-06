@@ -1,5 +1,6 @@
 import "./CardPokemon.scss"
 import { useState } from "react";
+import iconAdd from '../../../public/add.png'
 function CardPokemon(props) {
 
     function getColorHexa(pokemonType) {
@@ -55,19 +56,16 @@ function CardPokemon(props) {
         }
     }
     const [isOpen, setIsOpen] = useState(false)
-    
+
     return (
         <article id={props.pokemon.pokedexId} data-reverse={isOpen} onClick={(e) => {
             let article = document.getElementById(props.pokemon.pokedexId)
-            // console.log(e.target.getAttribute('data-reverse'))
             if (article.dataset.reverse == "true") {
                 setIsOpen(false)
-                console.log(article.dataset.reverse)
 
 
             } else if (article.dataset.reverse == "false") {
                 setIsOpen(true)
-                console.log(article.dataset.reverse)
 
             }
         }} key={props.pokemon.pokedexId} style={{ borderColor: getColorHexa(props.pokemon.apiTypes[0].name), backgroundColor: getColorHexa(props.pokemon.apiTypes[0].name) }}>
@@ -78,6 +76,18 @@ function CardPokemon(props) {
                     borderColor: getColorHexa(props.pokemon.apiTypes[0].name),
                 }}
             >
+                <span className="addToPokedex"
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        // if()
+                        // console.log(props.pokedex)
+                        // console.log(props.pokedex[0])
+                        // console.log(props.pokedex.indexOf(props.pokedex[0].id))
+                        props.setPokedex([...props.pokedex, {id:props.pokemon.pokedexId,name:props.pokemon.name}])
+                    }}
+                >
+                    <img  src={iconAdd} alt="(+)" />
+                </span>
                 <figure className="cardFront">
                     <picture>
                         <img src={props.pokemon.image} alt={"Image" + " " + `${props.pokemon.name}`} />
