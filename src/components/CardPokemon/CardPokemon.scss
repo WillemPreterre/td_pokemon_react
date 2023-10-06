@@ -26,7 +26,7 @@ article {
     box-shadow: -1px 2px 13px 0px rgba(0, 0, 0, 0.74);
   }
   
-  article[data-reverse="true"] .cardInner {
+  article[data-reverse='true'] .cardInner {
     //   .box:hover .cardInner {
     transform: rotateY(180deg);
   }
@@ -44,12 +44,13 @@ article {
   .cardBack {
     color: #eeeeee;
     transform: rotateY(180deg);
-    background-image: url("../../../public/pokemonCard-dos.png");
+    background-image: url('../../..//public/pokemonCard-dos.png');
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    z-index: 2;
   
     & {
       a {
@@ -159,7 +160,7 @@ article {
     border-radius: 5px;
     border: 1px solid #ced4da;
     &::after {
-      content: "\276F";
+      content: '\276F';
       position: absolute;
       top: 20%;
       right: 0;
@@ -173,6 +174,16 @@ article {
   
     &:hover::after {
       color: #fa6141;
+    }
+  }
+  
+  .addToPokedex {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    img {
+      width: inherit;
     }
   }
   

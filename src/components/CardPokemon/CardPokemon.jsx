@@ -1,5 +1,5 @@
-import "../style/components/CardPokemon.scss"
-import CardDos from "../../public/pokemonCard-dos.png"
+import "./CardPokemon.scss"
+import { useState } from "react";
 function CardPokemon(props) {
 
     function getColorHexa(pokemonType) {
@@ -54,17 +54,19 @@ function CardPokemon(props) {
                 return 'grey';
         }
     }
+    const [isOpen, setIsOpen] = useState(false)
+    
     return (
-        <article id={props.pokemon.pokedexId} data-reverse="false" onClick={(e) => {
+        <article id={props.pokemon.pokedexId} data-reverse={isOpen} onClick={(e) => {
             let article = document.getElementById(props.pokemon.pokedexId)
             // console.log(e.target.getAttribute('data-reverse'))
             if (article.dataset.reverse == "true") {
-                article.dataset.reverse = "false"
+                setIsOpen(false)
                 console.log(article.dataset.reverse)
 
 
             } else if (article.dataset.reverse == "false") {
-                article.dataset.reverse = "true"
+                setIsOpen(true)
                 console.log(article.dataset.reverse)
 
             }
