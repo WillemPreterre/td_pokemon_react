@@ -1,28 +1,19 @@
-
+import { Link, Outlet } from "react-router-dom";
+import Footer from "./components/Footer/footer";
 import logo from "../public/pokemon-logo.png"
-import './css/style.css'
-import './css/normalize.css'
-import Data from "./data/data.json"
-import CardPokemon from './components/CardPokemon/CardPokemon';
-import Sidebar from './components/SideBar/SideBar';
-import { useState } from "react";
 
-function App() {
-
-  const [pokedex, setPokedex] = useState([])
+export default function App() {
   return (
-    <>
+    <div className="App">
       <h1>
-        <img src={logo} alt="logo pokémon" />
+        <Link to={"/"}>
+          <img style={{ width: "300px", height: "auto" }} src={logo} alt="logo pokémon" />
+        </Link>
       </h1>
-      <div className="lmj-layout-inner">*
-        <Sidebar pokedex={pokedex}></Sidebar>
-        <main>
-          {Data.map((pokemon, index) => <CardPokemon key={index} pokedex={pokedex} setPokedex={setPokedex} pokemon={pokemon} />)}
-        </main>
+      <div id="detail">
+        <Outlet />
       </div>
-    </>
-  )
+      <Footer></Footer>
+    </div>
+  );
 }
-
-export default App

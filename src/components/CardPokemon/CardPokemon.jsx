@@ -1,10 +1,10 @@
 import "./CardPokemon.scss"
 import { useState } from "react";
 import iconAdd from '../../../public/add.png'
+import { Link } from "react-router-dom";
 function CardPokemon(props) {
 
     function getColorHexa(pokemonType) {
-
         switch (pokemonType) {
             case 'Eau':
                 return '#4169E1';
@@ -79,14 +79,11 @@ function CardPokemon(props) {
                 <span className="addToPokedex"
                     onClick={(e) => {
                         e.stopPropagation()
-                        // if()
-                        // console.log(props.pokedex)
-                        // console.log(props.pokedex[0])
-                        // console.log(props.pokedex.indexOf(props.pokedex[0].id))
-                        props.setPokedex([...props.pokedex, {id:props.pokemon.pokedexId,name:props.pokemon.name}])
+
+                        props.setPokedex([...props.pokedex, { id: props.pokemon.pokedexId, name: props.pokemon.name }])
                     }}
                 >
-                    <img  src={iconAdd} alt="(+)" />
+                    <img src={iconAdd} alt="(+)" />
                 </span>
                 <figure className="cardFront">
                     <picture>
@@ -106,7 +103,7 @@ function CardPokemon(props) {
                     </figcaption>
                 </figure>
                 <div className="cardBack">
-                    <a href="#">Voir plus</a>
+                    <Link to={`/pokemon/${props.pokemon.pokedexId}`}>Voir plus</Link>
                 </div>
             </div>
         </article>
